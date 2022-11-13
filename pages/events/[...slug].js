@@ -43,6 +43,7 @@ function FilteredEventsPage(props) {
   const numYear = +filteredYear;
   const numMonth = +filteredMonth;
 
+  // Data from local
   if (
     isNaN(numYear) ||
     isNaN(numMonth) ||
