@@ -34,13 +34,32 @@ function FilteredEventsPage(props) {
     }
   }, [data]);
 
+let pageHeadData = <Head>
+    <title>Filtered Events</title>
+    <meta
+      name="description"
+      content={`A list of filtered events.`}
+    />
+  </Head>;
+
+
+
+  if (!loadedEvents) {
+    return (
+    <Fragment>
+    {pageHeadData}
+     <p className='center'>Loading...</p>
+    </Fragment>
+    );
+  }
+
   const filteredYear = filterData[0];
   const filteredMonth = filterData[1];
 
   const numYear = +filteredYear;
   const numMonth = +filteredMonth;
 
-  const pageHeadData = (
+   pageHeadData = (
     <>
       <Head>
         <title>Filtered Events</title>
@@ -51,15 +70,6 @@ function FilteredEventsPage(props) {
       </Head>
   </>
 );
-
-  if (!loadedEvents) {
-    return (
-    <Fragment>
-    {pageHeadData}
-     <p className='center'>Loading...</p>
-    </Fragment>
-    );
-  }
 
   // Data from local
   if (
